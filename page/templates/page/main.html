@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static '/css/page.css' %}">
+    <script src="{% static '/js/page.js' %}"></script>
+</head>
+<body>
+    <div class="grid-container">
+        {% for list in lists %}
+            <div class="vertical-menu grid-item div-scroll" style="overflow-y: scroll; height:400px;">
+                <a class="active">{{ list.name }}</a>
+                {% for item in list.content %}
+                    {% if list.name == "Послуги" %}
+                        <a href="s-{{ item.slug }}/">id: {{ item.id }} label: {{ item.label }} label: {{ item.slug }}</a>
+                    {% endif %}
+                    {% if list.name == "Бренди" %}
+                        <a href="b-{{ item.slug }}/">id: {{ item.id }} label: {{ item.label }} label: {{ item.slug }}</a>
+                    {% endif %}
+                    {% if list.name == "Стилі" %}
+                        <a href="st-{{ item.slug }}/">
+                            id: {{ item.id }} label: {{ item.label }} label: {{ item.slug }}
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
